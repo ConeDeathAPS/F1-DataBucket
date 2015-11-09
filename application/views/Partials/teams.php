@@ -10,11 +10,12 @@
 	<script type="text/javascript" src="Materialize/jquery-ui.js"></script>
 	<script type="text/javascript">
 	$(document).ready(function() {
-		$("#content").fadeIn('slow');
+
 	})
 	$(document).on("click", ".team_select", function() {
 		$.get("get_team/" + $(this).attr("id"), function(data) {
 			$("#content").html(data);
+			console.log(data);
 		}, 'html');
 	})
 	</script>
@@ -45,7 +46,7 @@
 	<li><a id="10" class="team_select" href="#!0">Manor Marussia F1 Team</a></li>
 </ul>
 
-<div id="content" hidden>
+<div id="content">
 	<h1 id="banner">Choose a team...</h1>
 </div>
 </body>

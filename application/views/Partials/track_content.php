@@ -63,7 +63,7 @@ $(document).ready(function() {
 <!--=======================================BEGIN HTML CONTENT==================================-->
 <img id="background" src="imgs/track_pics/<?= $track_info['id']; ?>.jpg" alt="Track picture">
 
-<div id="information" style="padding:15px; background-color:rgba(0, 0, 0, .7);, color:white; position:absolute; top:15%; left:18%; width:700px;">
+<div id="information" style="padding:15px; background-color:rgba(0, 0, 0, .7);, color:white; position:absolute; top:5%; left:1%; width:700px;">
 	<h2 style="color:white; display:inline-block;">Track Information</h2>
 	<button data-target="layout_modal" class="btn modal-trigger" name="pop_out" style="display:inline-block; margin-bottom:28px; margin-left:63px;">Layout</button>
 	<p style="color: white;"><?= $track_info['info']; ?></p>
@@ -86,7 +86,7 @@ $(document).ready(function() {
 </div>
 
 
-<div id="map" style="height:650px; width:700px;  position:absolute!important; left:62%; top:15%;"> 
+<div id="map" style="height:650px; width:700px;position:absolute!important; left:50%; top:5%;"> 
 
 </div>
 <!--=======================================END HTML CONTENT==================================-->

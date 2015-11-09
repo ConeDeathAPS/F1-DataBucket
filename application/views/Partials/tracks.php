@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>Tracks</title>
     <link rel="stylesheet" href="Style/style_tracks.css">
+
     <link rel="stylesheet" type="text/css" href="Materialize/css/materialize.css">
     <script type="text/javascript" src="Materialize/jquery.min.js"></script>
     <script type="text/javascript" src="Materialize/js/materialize.min.js"></script>
@@ -66,8 +67,8 @@
 </ul>
 
 <div id="content">
-        <img id="background" src="imgs/Merc_Wide.jpg" alt="Spa-Francorchamps-background" hidden>
-        <h1 hidden>Choose a track.</h1>
+    <img id="background" src="imgs/Merc_Wide.jpg" alt="Spa-Francorchamps-background" hidden>
+    <h1 hidden>Choose a track.</h1>
 </div>
 </body>
 </html>

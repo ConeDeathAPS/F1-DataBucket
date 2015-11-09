@@ -23,7 +23,6 @@ class Track extends CI_model
 
 	public function get_track($id)
 	{
-		echo "Getting track in model" . $id;
 		return $this->db->query("SELECT * FROM tracks WHERE id = " . $id)->row_array();
 	}
 
