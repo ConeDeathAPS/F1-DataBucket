@@ -17,20 +17,20 @@ class Drivers extends CI_controller
 
 	public function new_driver()
 	{
-		$this->load->model("Driver");
+		$this->load->model("driver");
 
 		$driver_data = $this->input->post();
 		// var_dump($driver_data);
 		// die();
-		$this->Driver->insert_driver($driver_data);
+		$this->driver->insert_driver($driver_data);
 		redirect("/home/add_new");
 	}
 
 	public function get_driver($id)
 	{
-		$this->load->model("Driver");
+		$this->load->model("driver");
 
-		$driver_info = $this->Driver->get_driver_by_id($id);
+		$driver_info = $this->driver->get_driver_by_id($id);
 		
 		// var_dump($driver_info);
 		// die();

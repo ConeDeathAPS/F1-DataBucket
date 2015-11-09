@@ -16,19 +16,19 @@ class Tracks extends CI_controller
 
 	public function new_track()
 	{
-		$this->load->model("Track");
+		$this->load->model("track");
 
 		$track_data = $this->input->post();
 		// var_dump($track_data);
 		// die();
-		$this->Track->insert_track($track_data);
+		$this->track->insert_track($track_data);
 		redirect("/home/add_new");
 	}
 
 	public function get_track_by_id($id)
 	{
-		$this->load->Model("Track");
-		$track_info = $this->Track->get_track($id);
+		$this->load->Model("track");
+		$track_info = $this->track->get_track($id);
 		// var_dump($track_info);
 		// die();
 		$this->load->view("Partials/track_content", array("track_info" => $track_info));
@@ -36,7 +36,7 @@ class Tracks extends CI_controller
 
 	public function get_track_laps($id)
 	{
-		$this->load->Model("Track");
+		$this->load->Model("track");
 		
 	}
 

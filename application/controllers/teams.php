@@ -16,7 +16,7 @@ class Teams extends CI_controller
 
 	public function get_team_and_drivers($id)
 	{
-		$this->load->model("Team");
+		$this->load->model("team");
 		$data = $this->team->get_team_and_drivers_by_id($id);
 		$this->load->view('Partials/team_content', array('data' => $data));
 		// var_dump($data);
