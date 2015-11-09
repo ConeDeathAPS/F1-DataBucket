@@ -1,0 +1,39 @@
+#content {
+	background-color: #3c3c3c;
+	display: inline-block;
+	vertical-align: top;
+	width: 1655px;
+}
+#driver_information {
+	display: inline-block;
+	color: white;
+	vertical-align: top;
+	margin: 2%;
+	width: 400px;
+}
+#driver_information p, h3 {
+	text-align: center;
+}
+body {
+	background-color: black;
+}
+h1 {
+	color: white;
+	position: absolute;
+	text-align: center;
+	top: 51%;
+	left: 20%;
+}
+img {
+	width: 1659px;
+}
+.nav-wrapper {
+	background-color: black;
+}
+.driver_pic {
+	margin: 2%;
+	width: 357px;
+}
+#wdc_points {
+	margin: 0px 2%;
+}

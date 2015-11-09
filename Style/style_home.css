@@ -1,0 +1,18 @@
+img {
+	height: 900px;
+}
+#message {
+	text-align: center;
+	position: relative;
+	bottom: 60%;
+	color: white;
+}
+#main {
+	height: 811px;
+}
+body {
+	background: #3c3c3c;
+}
+.nav-wrapper {
+	background-color: black;
+}

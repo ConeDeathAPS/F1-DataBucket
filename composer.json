@@ -1,0 +1,6 @@
+{
+	"require": {
+		"ext-mysql": "*",
+		"monolog/monolog": "1.2.*"
+	}
+}

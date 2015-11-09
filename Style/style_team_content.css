@@ -1,0 +1,44 @@
+
+.team_info {
+	padding: 40px;
+	background-image: linear-gradient(90deg, black, rgba(255, 255, 255, 0));
+	height: 100%;
+}
+.main_content {
+	display: inline-block;
+}
+.main_content h1 {
+	color: rgba(255, 0, 0, .8);
+	text-align: center;
+	margin-top: 0px;
+}
+h4 {
+	display: inline-block;
+	color: white;
+	margin: 10px 20px;
+	border-bottom: 4px solid rgba(255, 0, 0, .6);
+}
+.btn {
+	background-color: rgba(255, 0, 0, .6)!important;
+}
+.btn:hover {
+	background-color: rgba(255, 0, 0, .8)!important;
+}
+#drivers {
+	display: inline-block;
+	vertical-align: top;
+}
+.graph_getters {
+	display: inline-block;
+	vertical-align: top;
+	height: 37%;
+}
+.graph_getters li:nth-child(even) {
+	margin: 30px 0px;
+}
+#constructor_graph {
+	display: inline-block;
+}
+.progress {
+	display: inline-block;
+}

@@ -1,0 +1,21 @@
+#content {
+	display: inline-block;
+	vertical-align: top;
+}
+#background {
+	width: 1655px;
+	margin-left: -4px;
+}
+body {
+	background-color: black;
+}
+h1 {
+	position: absolute;
+	color: white;
+	text-align: center;
+	bottom:40%;
+	right: 38%;
+}
+.nav-wrapper {
+	background-color: black;
+}
