@@ -94,8 +94,7 @@ function draw_graph(data, graph_type) {
             border_color: "black",
             bar_easing: "none"
         });
-        Charter.draw_chart("wdc_points", graph_data, 400, 800);
-        $(".wdc_points").fadeIn("fast");   
+        Charter.draw_chart("wdc_points", graph_data, 400, 800);  
     } 
 }
 //============================END FUNCTION TO DRAW GRAPH============================//
@@ -135,8 +134,10 @@ if (isset($driver_info)) {
         </ul>        
 
     </div>
-    <div id="wdc_points" hidden>
-
+    <div id="wdc_points">
+        <div class="progress">
+            <div class="determinate"></div>
+        </div>
     </div>
     <?php
 } ?>

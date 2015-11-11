@@ -4,13 +4,19 @@
 	<meta charset="UTF-8">
 	<title>Teams</title>
 	<link rel="stylesheet" href="Style/style_teams.css">
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	
 	<link rel="stylesheet" type="text/css" href="Materialize/css/materialize.css">
 	<script type="text/javascript" src="Materialize/jquery.min.js"></script>
 	<script type="text/javascript" src="Materialize/js/materialize.min.js"></script>
 	<script type="text/javascript" src="Materialize/jquery-ui.js"></script>
 	<script type="text/javascript">
 	$(document).ready(function() {
-
+		$(".dropdown-button").dropdown({
+			alignment: 'right',
+			constrain_width: false,
+			belowOrigin: true
+		});
 	})
 	$(document).on("click", ".team_select", function() {
 		$.get("get_team/" + $(this).attr("id"), function(data) {
@@ -24,11 +30,18 @@
 <nav>
 	<div class="nav-wrapper z-depth-5">
 		<a class="brand-logo center" href="#">F1 DataBucket</a>
-		<ul id="nav-mobile" class="right hide-on-med-and-down">
-			<li><a href="/">Home</a></li>
-			<li><a href="/drivers">Driver</a></li>
-			<li class="active"><a href="/teams">Team</a></li>
-			<li><a href="/tracks">Track</a></li>
+		<a href="#" class="dropdown-button" data-activates="nav-dropdown"><i class="medium material-icons">reorder</i></a>
+		<ul id="nav-dropdown" class="dropdown-content">
+			<li><a href="/" class="btn btn-nav">Home</a></li>
+			<li><a href="/drivers" class="btn btn-nav">Drivers</a></li>
+			<li><a href="/teams" class="btn btn-nav">Teams</a></li>
+			<li><a href="/tracks" class="btn btn-nav">Tracks</a></li>
+		</ul>
+		<ul id="nav-mobile" class="right separate-buttons">
+			<li class=""><a class="navi" name="Home" href="/">Home</a></li>
+			<li class=""><a class="navi" name="Drivers" href="/drivers">Drivers</a></li>
+			<li class="active"><a class="navi" name="Teams" href="/teams">Teams</a></li>
+			<li class=""><a class="navi" name="Tracks" href="/tracks">Tracks</a></li>
 		</ul>
 	</div>
 </nav>
@@ -47,7 +60,6 @@
 </ul>
 
 <div id="content">
-	<h1 id="banner">Choose a team...</h1>
 </div>
 </body>
 </html>

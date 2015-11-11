@@ -6,14 +6,53 @@
 body {
 	background-color: black;
 }
+@media screen and (max-width: 992px) {
+	.dropdown-button {
+		display: inline-block;
+		float: right;
+		height: 100%;
+		-webkit-transition: .25s;
+		background-color: black;
+		border-radius: 0px!important;
+		width: 7%!important;
+		text-align: center;
+	}
+	.dropdown-button:hover {
+		-webkit-transition: .25s;
+		background-color: rgba(255, 0, 0, .8);
+
+	}
+	.dropdown-content {
+		width: 150px;
+		height: 144px;
+	}
+	.dropdown-content li a {
+		padding: 0px!important;
+		border-radius: 0px!important;
+		color: white!important;
+	}
+	.dropdown-content li a:hover {
+		background-color: #c70000!important;
+	}
+	.separate-buttons {
+		display: none;
+	}
+}
+@media screen and (min-width: 993px) {
+	.dropdown-button {
+		display: none!important;
+	}
+}
+.side-nav {
+	width: 13%!important;
+}
 #content {
 	background-image: url("../imgs/Start.jpg");
 	background-size: cover;
 	display: inline-block;
 	position: absolute;
-	margin-left: -4px;
 	vertical-align: top;
-	width: 87.7%;
+	width: 87%;
 	height: 881px;
 }
 #banner {

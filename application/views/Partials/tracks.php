@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>Tracks</title>
     <link rel="stylesheet" href="Style/style_tracks.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
     <link rel="stylesheet" type="text/css" href="Materialize/css/materialize.css">
     <script type="text/javascript" src="Materialize/jquery.min.js"></script>
@@ -30,6 +31,11 @@
             $("#content").html(track_data);
             }, "html");
         });
+        $(".dropdown-button").dropdown({
+            alignment: 'right',
+            constrain_width: false,
+            belowOrigin: true
+        });
     })    
 </script>
 </head>
@@ -37,7 +43,14 @@
 <nav>
     <div class="nav-wrapper z-depth-5">
         <a class="brand-logo center" href="#">F1 DataBucket</a>
-        <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <a href="#" class="dropdown-button" data-activates="nav-dropdown"><i class="medium material-icons">reorder</i></a>
+        <ul id="nav-dropdown" class="dropdown-content">
+            <li><a href="/" class="btn btn-nav">Home</a></li>
+            <li><a href="/drivers" class="btn btn-nav">Drivers</a></li>
+            <li><a href="/teams" class="btn btn-nav">Teams</a></li>
+            <li><a href="/tracks" class="btn btn-nav">Tracks</a></li>
+        </ul>
+        <ul id="nav-mobile" class="right separate-buttons">
             <li class=""><a class="navi" name="Home" href="/">Home</a></li>
             <li class=""><a class="navi" name="Drivers" href="/drivers">Drivers</a></li>
             <li class=""><a class="navi" name="Teams" href="/teams">Teams</a></li>
@@ -68,7 +81,6 @@
 
 <div id="content">
     <img id="background" src="imgs/Merc_Wide.jpg" alt="Spa-Francorchamps-background" hidden>
-    <h1 hidden>Choose a track.</h1>
 </div>
 </body>
 </html>
