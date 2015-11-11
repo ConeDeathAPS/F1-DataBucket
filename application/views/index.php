@@ -12,7 +12,6 @@
 	{
 		$.get("/home/home_index", function(partial_data) {
 		$("#main").html(partial_data);
-		$("iframe").fadeIn("slow");
 		}, "html");	
 	};
 
@@ -34,7 +33,7 @@
 	</div>
 </nav>
 <div id="main">
-
+	
 </div>
 </body>
 </html>

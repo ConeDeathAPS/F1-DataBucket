@@ -1,12 +1,3 @@
-img {
-	height: 900px;
-}
-#message {
-	text-align: center;
-	position: relative;
-	bottom: 60%;
-	color: white;
-}
 #main {
 	height: 811px;
 }
@@ -15,4 +6,20 @@ body {
 }
 .nav-wrapper {
 	background-color: black;
+}
+.progress {
+	width: 60%!important;
+	margin: 0 auto!important;
+}
+#slideshow {
+	vertical-align: middle;
+	margin: 0% auto;
+	position: absolute;
+	top: 10%;
+	left: 10%;
+	width: 75%;
+	padding: 0px!important;
+}
+#slideshow img {
+	width: 100%;
 }
