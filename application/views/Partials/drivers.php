@@ -4,17 +4,25 @@
 	<meta charset="UTF-8">
 	<title>Drivers</title>
 	<link rel="stylesheet" href="Style/style_drivers.css">
-	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-	
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 	<link rel="stylesheet" type="text/css" href="Materialize/css/materialize.css">
-	<script type="text/javascript" src="Materialize/jquery.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 	<script type="text/javascript" src="Charter/Charter.js"></script>
 	<script type="text/javascript" src="Materialize/js/materialize.min.js"></script>
-	<script
 	<script type="text/javascript">
 	$(document).ready(function() {
         $("img").fadeIn("slow");
         $("h1").fadeIn("slow");
+		$(".nav-dropdown-button").dropdown({
+			alignment: 'right',
+			constrain_width: false,
+			belowOrigin: true
+		});
+		$(".drivers-dropdown-button").dropdown({
+			alignment: 'left',
+			constrain_width: false,
+			belowOrigin: true
+		});
 	})
 	$(document).on("click", ".driver_select", function() {
 		$("#background").fadeOut("slow");
@@ -25,19 +33,16 @@
 			// console.log(driver_data);
 			$("#content").html(driver_data);
 		}, "html");
-		$(".dropdown-button").dropdown({
-			alignment: 'right',
-			constrain_width: false,
-			belowOrigin: true
-		});
+
 	})
 	</script>
 </head>
 <body>
 <nav>
 	<div class="nav-wrapper z-depth-5">
+		<a href="#" class="drivers-dropdown-button" data-activates="drivers-dropdown"><i class="fa fa-user fa-2"></i></a>
 		<a class="brand-logo center" href="#">F1 DataBucket</a>
-		<a href="#" class="dropdown-button" data-activates="nav-dropdown"><i class="medium material-icons">reorder</i></a>
+		<a href="#" class="nav-dropdown-button" data-activates="nav-dropdown"><i class="fa fa-bars fa-2"></i></a>
 		<ul id="nav-dropdown" class="dropdown-content">
 			<li><a href="/" class="btn btn-nav">Home</a></li>
 			<li><a href="/drivers" class="btn btn-nav">Drivers</a></li>
@@ -52,6 +57,28 @@
 		</ul>
 	</div>
 </nav>
+<ul id="drivers-dropdown" class="dropdown-content">
+    <li><a class="driver_select" id="1" href="#">Lewis Hamilton</a></li>
+    <li><a class="driver_select" id="2" href="#">Nico Rosberg</a></li>
+    <li><a class="driver_select" id="3" href="#">Sebastian Vettel</a></li>
+    <li><a class="driver_select" id="4" href="#">Kimi Raikkonen</a></li>
+    <li><a class="driver_select" id="5" href="#">Felipe Massa</a></li>
+    <li><a class="driver_select" id="6" href="#">Valttieri Bottas</a></li>
+    <li><a class="driver_select" id="7" href="#">Daniil Kvyat</a></li>
+    <li><a class="driver_select" id="8" href="#">Daniel Ricciardo</a></li>
+    <li><a class="driver_select" id="9" href="#">Romain Grosjean</a></li>
+    <li><a class="driver_select" id="10" href="#">Max Verstappen</a></li>
+    <li><a class="driver_select" id="11" href="#">Sergio Perez</a></li>
+    <li><a class="driver_select" id="12" href="#">Nico Hulkenberg</a></li>
+    <li><a class="driver_select" id="13" href="#">Felipe Nasr</a></li>
+    <li><a class="driver_select" id="14" href="#">Pastor Maldonado</a></li>
+    <li><a class="driver_select" id="15" href="#">Fernando Alonso</a></li>
+    <li><a class="driver_select" id="16" href="#">Carlos Sainz</a></li>
+    <li><a class="driver_select" id="17" href="#">Marcus Ericsson</a></li>
+    <li><a class="driver_select" id="18" href="#">Jenson Button</a></li>
+    <li><a class="driver_select" id="19" href="#">Roberto Merhi</a></li>
+    <li><a class="driver_select" id="20" href="#">Will Stevens</a></li>
+</ul>
 <ul id="slide-out" class="side-nav">
     <li><a class="driver_select" id="1" href="#">Lewis Hamilton</a></li>
     <li><a class="driver_select" id="2" href="#">Nico Rosberg</a></li>

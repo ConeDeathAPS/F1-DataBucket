@@ -31,7 +31,7 @@
 	}
 }
 @media screen and (min-width: 993px) {
-	.dropdown-button {
+	.dropdown-button, #dropdown-content {
 		display: none!important;
 	}
 	#main {
@@ -51,7 +51,7 @@
 	#slideshow {
 		vertical-align: middle;
 		margin: 0% auto;
-		margin-top: 6%;
+		margin-top: 2%;
 		position: absolute;
 		left: 10%;
 		width: 75%;

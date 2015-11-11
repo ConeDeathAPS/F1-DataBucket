@@ -4,9 +4,9 @@
 	<meta charset="UTF-8">
 	<title>F1 DataBucket</title>
 	<link rel="stylesheet" href="Style/style_home.css">
-	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 	<link rel="stylesheet" type="text/css" href="Materialize/css/materialize.css">
-	<script type="text/javascript" src="Materialize/jquery.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 	<script type="text/javascript" src="Materialize/js/materialize.min.js"></script>
 	<script type="text/javascript">
 	function home()
@@ -30,7 +30,7 @@
 <nav>
 	<div class="nav-wrapper z-depth-5">
 		<a class="brand-logo center" href="#">F1 DataBucket</a>
-		<a href="#" class="dropdown-button" data-activates="nav-dropdown"><i class="medium material-icons">reorder</i></a>
+		<a href="#" class="dropdown-button" data-activates="nav-dropdown"><i class="fa fa-bars fa-2"></i></a>
 		<ul id="nav-dropdown" class="dropdown-content">
 			<li><a href="/" class="btn btn-nav">Home</a></li>
 			<li><a href="/drivers" class="btn btn-nav">Drivers</a></li>
