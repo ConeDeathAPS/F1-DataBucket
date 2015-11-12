@@ -8,11 +8,9 @@
 }
 </style>
 <script type="text/javascript">
-// jQuery.ajaxSetup({async:true});
 var data = [];
 $(document).ready(function() {
-    $("img").fadeIn("slow");
-    $("h1").fadeIn("slow");
+    $("#info_container").fadeIn('slow');
     //materialize dropdown initialization
     $('.dropdown-button').dropdown({
       inDuration: 300,
@@ -22,6 +20,7 @@ $(document).ready(function() {
       gutter: 0,
       belowOrigin: true
     });
+})
 //==========================BEGIN API REQUEST AND DATA STORAGE=======================//
 //this function gets only the required data, whether it be points, positions, or wins based upon the parameter passed in
 function get_history(input) {
@@ -31,31 +30,33 @@ function get_history(input) {
     var driver_id = $("#driver_name").html();          
     //for each year, get driver results and add them into the object
     //ajax must be synchronous, otherwise you get missing data or data in the wrong order
+    var percent = 0;
     $.ajaxSetup({async:false});
     //for each year between 2004 and 2015, request info for the selected driver from the Ergast API
     for (var year = 2004; year < 2016; year++) {
         var object = {};
         var start = new Date().getTime();
         $.get("http://ergast.com/api/f1/" + year +"/drivers/" + driver_id + "/driverstandings.json", function(driver_standings) {
-            console.log("Request returned in", new Date().getTime() - start, "milliseconds.");
+            console.log("Request", year - 2003, "of 12 returned in", new Date().getTime() - start, "milliseconds.");
+            percent += 8.34;
+            console.log(percent);
+            $("#percent").html(percent);
+            $(".determinate").width("+=" + ($(this).parent().width()/100)*9 + "%");
             //store data
             if (driver_standings.MRData.StandingsTable.StandingsLists[0]) {
                 //fill the data object with the necessary information
                 object.position = driver_standings.MRData.StandingsTable.StandingsLists[0].DriverStandings[0].position;
                 object.points = driver_standings.MRData.StandingsTable.StandingsLists[0].DriverStandings[0].points;
                 object.wins = driver_standings.MRData.StandingsTable.StandingsLists[0].DriverStandings[0].wins;
-                console.log("Pushing with data from", driver_standings.MRData.StandingsTable.season);
-                //increment the progress bar
-                $(".determinate").css("width", "+=75%;");
+                // console.log("Pushing data for", driver_standings.MRData.StandingsTable.season);
                 //push the filled object into the data array
                 data.push(object);
             } else {
+                //if the driver did not race, then store 0s for that year
                 object.position = "0";
                 object.points = "0";
                 object.wins = "0";
-                console.log("Pushing a 0 with data from", driver_standings.MRData.StandingsTable.season);
-                //increment the progress bar
-                $(".determinate").css("width", "+=75%;");
+                // console.log("Pushing 0s for", driver_standings.MRData.StandingsTable.season);
                 data.push(object);
             }
         }, "json");
@@ -67,6 +68,7 @@ function get_history(input) {
     } 
 }    
 //==========================END API REQUEST AND DATA STORAGE=======================//
+//=================================BEGIN DATA PARSE================================//
 function parseData(category, data) {
     //stop the window.setInterval function
     // console.log("Data from API", data);
@@ -91,46 +93,55 @@ function parseData(category, data) {
         return drawGraph(category, final_data);
     }
 }
+//=================================END DATA PARSE================================//
 //============================BEGIN FUNCTION TO DRAW GRAPH=========================//
 //this function uses the provided array of data to draw a bar graph
 function drawGraph(graph_type, data) { 
+        $("#progress_indicators").hide();
+        //format the graph_type string
+        var name = "";
+        var chars = graph_type.split("");
+        // console.log(chars);
+        chars[0] = chars[0].toUpperCase();
+        for (each in chars) {
+            name += chars[each];
+        }
 
         Charter.get_styling({
             bar_color: "rgba(255, 0, 0, .6)",
             chart_background: "#3c3c3c",
             label_background: "#3c3c3c",
-            chart_name: graph_type,
+            header_color: "white",
+            chart_name: name,
             x_axis_labels: ["2004", "2005", "2006", "2007", "2008", "2009", "2010", "2011", "2012", "2013", "2014", "2015"],
             y_axis_labels: [],
             bar_label_color: "white",
             border_color: "black",
             easing: "none"
         });
-        Charter.draw_chart("wdc_points", data, 400, 800);  
+        Charter.draw_chart("driver_graph", data, 400, 800);  
 }
 //============================END FUNCTION TO DRAW GRAPH============================//
-//============================BEGIN GRAPH DATA SELECTION============================//
+//============================BEGIN GRAPH INITIALIZATION============================//
 //this function begins the API/graphing cascade
-    $(document).on("click", ".graph_control", function() {
-        var option = $(this).attr("id");
-        $(".progess").css({display: "static!important;"});
-        //draw a graph with the data supplied by get_history which will take the option as a parameter
-        // console.log($("#chart_container").html());
-        if ($("#chart_container").html() != undefined) {
-            console.log("Option changed...");
-            parseData(option, data);
-        } else {
-            get_history(option);            
-        }
-    });
-//===============================END GRAPH DATA SELECTION===========================//
-})
+$(document).on("click", ".graph_control", function() {
+    var option = $(this).attr("id");
+    //draw a graph with the data supplied by get_history which will take the option as a parameter
+    if ($("#chart_container").html() != undefined) {
+        console.log("Option changed...");
+        parseData(option, data);
+    } else {
+        $("#progess_indicators").slideDown();
+        get_history(option);            
+    }
+});
+//===============================END GRAPH INITIALIZATION===========================//
 </script>
 
 <?php 
 if (isset($driver_info)) {
 ?>
-<div id="info_container">
+<div id="info_container" hidden>
     <h4 id="driver_name" hidden><?= $driver_info['driverID'] ?></h4>
     <img class="driver_pic" src="/imgs/driver_pics/<?= $driver_info['id']; ?>.jpg" alt="Driver picture">
     <div id="driver_information">
@@ -148,9 +159,12 @@ if (isset($driver_info)) {
         </ul>        
 
     </div>
-    <div id="wdc_points">
-        <div class="progress">
-            <div class="determinate"></div>
+    <div id="driver_graph">
+        <div id="progress_indicators" hidden>
+            <h4>Getting driver data...<span id="percent"></span>%</h4>
+            <div class="progress">
+                <div class="determinate"></div>
+            </div>            
         </div>
     </div>
 </div>

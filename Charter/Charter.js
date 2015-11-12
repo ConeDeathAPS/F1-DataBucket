@@ -28,6 +28,7 @@ var Charter = (function() {
 			border_color = properties.border_color;
 			bar_easing = properties.easing;
 		},
+		//define scaling
 		auto_scaling: function(user_data, user_height, user_width) {
 			var max = 0;
 			data = [];
@@ -46,6 +47,7 @@ var Charter = (function() {
 			var scaling = [bar_height_multiplier, bar_width];
 			return scaling;
 		},
+		//draw the chart
 		draw_chart: function(chartID, data, height, width) {
 			//declare some local variables
 			var chart = document.getElementById(chartID);
@@ -80,4 +82,5 @@ var Charter = (function() {
 			}
 		}
 	}
+
 })();

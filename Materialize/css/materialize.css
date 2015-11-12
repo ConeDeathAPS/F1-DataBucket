@@ -2376,7 +2376,6 @@ span.badge {
 .progress {
   position: relative;
   height: 4px;
-  display: block;
   width: 100%;
   background-color: white;
   border-radius: 2px;
