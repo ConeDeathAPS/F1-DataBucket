@@ -1,5 +1,4 @@
 <script type="text/javascript" src="Charter/Charter.js"></script>
-
 <script type="text/javascript">
 var APIreq;
 function getHistory(category) {
