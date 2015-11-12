@@ -4,6 +4,7 @@
 		float: right;
 		height: 100%;
 		-webkit-transition: .25s;
+		-moz-transition: .25s;
 		background-color: black;
 		border-radius: 0px!important;
 		width: 7%!important;
@@ -11,8 +12,8 @@
 	}
 	.nav-dropdown-button:hover {
 		-webkit-transition: .25s;
+		-moz-transition: .25s;
 		background-color: rgba(255, 0, 0, .8);
-
 	}
 	#nav-dropdown {
 		width: 150px;
@@ -53,6 +54,7 @@
 		float: left;
 		height: 100%;
 		-webkit-transition: .25s;
+		-moz-transition: .25s;
 		background-color: black;
 		border-radius: 0px!important;
 		width: 7%!important;
@@ -60,6 +62,7 @@
 	}
 	.drivers-dropdown-button:hover {
 		-webkit-transition: .25s;
+		-moz-transition: .25s;
 		background-color: rgba(255, 0, 0, .8);
 	}
 	#drivers-dropdown {
@@ -88,7 +91,7 @@
 	display: inline-block;
 	vertical-align: top;
 	width: 87%;
-	height: 99%;
+	height: 100%;
 	margin-left: -4px;
 }
 #driver_information {
@@ -120,6 +123,13 @@ img {
 .driver_pic {
 	margin: 2%;
 	width: 357px;
+}
+.progress {
+	width: 96%!important;
+}
+#info_container {
+	width: 51%;
+	height: 100%;
 }
 #wdc_points {
 	margin: 0px 2%;

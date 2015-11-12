@@ -58,19 +58,11 @@ var Charter = (function() {
 			var chart_data = document.getElementById("chart_container");
 			//populate the bars
 			for (i = 0; i < data.length; i++) {
-				if (bar_easing != "" || bar_easing != "none" || bar_easing != undefined) {
-					var div = document.createElement('div');
-					div.setAttribute("id", "bar" + i);
-					div.setAttribute("style", "height:0px; width:" + scaling[1] + "px; background-color:" + bcolor + ";display:inline-block;vertical-align:bottom;margin:0px 5px;overflow:hidden;");
-					div.innerHTML = "<p class='bar_label' style='text-align:center;color:" + bar_label_color + ";font-family:arial;font-weight:bold;margin-bottom:5px;'>" + data[i] + "</p>";
-					chart_data.appendChild(div);	
-				} else {
-					var div = document.createElement('div');
-					div.setAttribute("id", i);
-					div.setAttribute("style", "height:" + (data[i] * scaling[0]) +"px; width:" + scaling[1] + "px; background-color:" + bcolor + ";display:inline-block;vertical-align:bottom;margin:0px 5px;overflow:hidden;");
-					div.innerHTML = "<p class='bar_label' style='text-align:center;color:" + bar_label_color + ";font-family:arial;font-weight:bold;margin-bottom:5px;'>" + data[i] + "</p>";
-					chart_data.appendChild(div);	
-				}
+				var div = document.createElement('div');
+				div.setAttribute("id", i);
+				div.setAttribute("style", "height:" + (data[i] * scaling[0]) +"px; width:" + scaling[1] + "px; background-color:" + bcolor + ";display:inline-block;vertical-align:bottom;margin:0px 5px;overflow:hidden;");
+				div.innerHTML = "<p class='bar_label' style='text-align:center;color:" + bar_label_color + ";font-family:arial;font-weight:bold;margin-bottom:5px;'>" + data[i] + "</p>";
+				chart_data.appendChild(div);	
 			}
 			//begin populating labels if the user specified values for them
 			if (x_text) {
@@ -84,13 +76,6 @@ var Charter = (function() {
 					label.setAttribute("style", "list-style-type:none;display:inline-block;width:" + scaling[1] + "px;margin:0px 5px;text-align:center;color:" + label_color + ";");
 					label.innerHTML = x_text[i];
 					x_labels_container.appendChild(label);
-				}
-			}
-			if (bar_easing != "none" || bar_easing != "" || bar_easing != undefined) {
-				for (i = 0; i < data.length; i++) {
-					if (data[i] != 0) {
-						$("#bar" + i).animate({height: data[i]*scaling[0]}, 250, bar_easing, function(){});			
-					}		
 				}
 			}
 		}
