@@ -97,7 +97,6 @@ function drawGraph(category, data_parsed) {
 	});
 </script>
 <link rel="stylesheet" href="Style/style_team_content.css">
-
 <div class="team_info">
 	<div class="main_content">
 		<h1><?= $data['team_name']; ?></h1>

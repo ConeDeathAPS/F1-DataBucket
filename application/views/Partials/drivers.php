@@ -33,7 +33,6 @@
 			// console.log(driver_data);
 			$("#content").html(driver_data);
 		}, "html");
-
 	})
 	</script>
 </head>

@@ -86,7 +86,7 @@ var Charter = (function() {
 					x_labels_container.appendChild(label);
 				}
 			}
-			if (bar_easing != "") {
+			if (bar_easing != "none" || bar_easing != "") {
 				for (i = 0; i < data.length; i++) {
 					if (data[i] != 0) {
 						$("#bar" + i).animate({height: data[i]*scaling[0]}, 250, bar_easing, function(){});			

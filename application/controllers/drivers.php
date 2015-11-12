@@ -12,7 +12,6 @@ class Drivers extends CI_controller
 	public function index()
 	{
 		$this->load->view("Partials/drivers");
-		$this->load->view("Partials/drivers_info");
 	}
 
 	public function new_driver()

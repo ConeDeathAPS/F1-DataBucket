@@ -9,7 +9,7 @@
 </style>
 <script type="text/javascript">
 // jQuery.ajaxSetup({async:true});
-
+var getStats;
 $(document).ready(function() {
     $("img").fadeIn("slow");
     $("h1").fadeIn("slow");
@@ -26,63 +26,78 @@ $(document).ready(function() {
 //this function gets only the required data, whether it be points, positions, or wins based upon the parameter passed in
 function get_history(input) {
     $(".wdc_points").fadeOut("fast");
+    var finished = false;
     //grab the driver code from db            
     var driver_id = $("#driver_name").html();          
-    //create object for storage of data like 2004: [position, points, wins]
+    //create object for storage of data like {position: **, poinst: **, wins: **}
     var data = [];
     //for each year, get driver results and add them into the object
-    for (var year = 2004; year <= 2015; year++) {
-    //begin .get request passing in year and selected driver
-        $.get("http://ergast.com/api/f1/" + year +"/drivers/" + driver_id + "/driverstandings.json", function(driver_standings) {
-            //if the driver did not participate in the season for a given year, store 0s.
-            if (driver_standings.MRData.StandingsTable.StandingsLists[0]) {
-                var object = {[driver_standings.MRData.StandingsTable.season]: driver_standings.MRData.StandingsTable.StandingsLists[0].DriverStandings[0][input]}
-                data.push(object);
-            } else {
-                data.push({[driver_standings.MRData.StandingsTable.season]: '0'});
-            }
-            if (data.length == 12) {
-                draw_graph(data, input);              
-            }     
-        }, "json");   
-    }
-}     
-function bubblesort_data(data) {
-    console.log("In sort function: ", data);
-    var swap = true
-    while (swap) {
-        swap = false;
-        for (var i = 0; i < data.length-1; i++) {
-            for (var x = i+1; x < data.length; x++) {
-                if (Object.keys(data[i])[0] > Object.keys(data[x])[0]) {
-                    var temp = data[i];
-                    data[i] = data[x];
-                    data[x] = data[i];
-                    swap = true;
+    var year = 2004;
+    getStats = window.setInterval(function() {
+        var count = 1;
+        if (year < 2016 && count === 1) {
+            var object = {};
+            $.get("http://ergast.com/api/f1/" + year +"/drivers/" + driver_id + "/driverstandings.json", function(driver_standings) {
+                //store data
+                if (driver_standings.MRData.StandingsTable.StandingsLists[0] != undefined && count === 1) {
+                    count = 0;
+                    object.position = driver_standings.MRData.StandingsTable.StandingsLists[0].DriverStandings[0].position;
+                    object.points = driver_standings.MRData.StandingsTable.StandingsLists[0].DriverStandings[0].points;
+                    object.wins = driver_standings.MRData.StandingsTable.StandingsLists[0].DriverStandings[0].wins;
+                    console.log("Pushing year", year);
+                    data.push(object);
+                    driver_standings = undefined;
+                } else {
+                    count = 0;
+                    object.position = "0";
+                    object.points = "0";
+                    object.wins = "0";
+                    console.log("Pushing year", year);
+                    data.push(object);
+                    driver_standings = undefined;
                 }
-            }
-        }               
-    }
-    return data;
-}
+                year++;
+                return true;
+            }, "json");
+        } else if (!finished) {
+            finished = true;
+            console.log("Finished with requests", data);
+            console.log("Done!");        
+            parseData(input, data);
+        }   
+    }, 400);
+}    
 //==========================END API REQUEST AND DATA STORAGE=======================//
+function parseData(category, data) {
+    //stop the window.setInterval function
+    clearInterval(getStats);  
+    console.log("Data from API", data);
+    var final_data = [];
+    if (category === "position" && final_data[0] === undefined) {
+        for (i = 0; i < data.length; i++) {
+            final_data.push(data[i].position);
+        }
+        console.log(final_data);
+        return drawGraph(category, final_data);
+    } else if (category === "points" && final_data[0] === undefined) {
+        for (i = 0; i < data.length; i++) {
+            final_data.push(data[i].points);
+        }
+        console.log(final_data);
+        return drawGraph(category, final_data);
+    } else if (category === "wins" && final_data[0] === undefined) {
+        for (i = 0; i < data.length; i++) {
+            final_data.push(data[i].wins);
+        }
+        console.log("Final data", final_data);
+        return drawGraph(category, final_data);
+    }
+}
 //============================BEGIN FUNCTION TO DRAW GRAPH=========================//
 //this function uses the provided array of data to draw a bar graph
-function draw_graph(data, graph_type) {
-    if (data) {
-        // console.log("5");
+function drawGraph(graph_type, data) { 
         //sort asynchronous AJAX requests
-        var sorted_data = bubblesort_data(data);
-        console.log(sorted_data);
-        var graph_data = [];
-        //pull out data from objects
-        for (i=0; i < sorted_data.length; i++) {
-            for (each in sorted_data[i]) {
-                graph_data.push(sorted_data[i][each]);
-            }
-        }
-        // console.log(graph_data);
-
+        // console.log(data);
         Charter.get_styling({
             bar_color: "rgba(255, 0, 0, .6)",
             chart_background: "#3c3c3c",
@@ -94,8 +109,7 @@ function draw_graph(data, graph_type) {
             border_color: "black",
             bar_easing: "none"
         });
-        Charter.draw_chart("wdc_points", graph_data, 400, 800);  
-    } 
+        Charter.draw_chart("wdc_points", data, 400, 800);  
 }
 //============================END FUNCTION TO DRAW GRAPH============================//
 //============================BEGIN GRAPH DATA SELECTION============================//
@@ -111,9 +125,7 @@ function draw_graph(data, graph_type) {
 //===============================END GRAPH DATA SELECTION===========================//
 })
 </script>
-</head>
 
-<div id="content">
 <?php 
 if (isset($driver_info)) {
 ?>
@@ -141,4 +153,3 @@ if (isset($driver_info)) {
     </div>
     <?php
 } ?>
-</div>
