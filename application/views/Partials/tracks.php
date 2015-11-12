@@ -27,19 +27,14 @@
         });
     })
     $(document).on("click", ".tclick", function() {
-    console.log("Clicked");
-    var id = $(this).attr("id");
-    $(".active").removeClass("active");
-    $(this).parent().addClass("active");   
-    $("h1").fadeOut("slow")
-    $("#information").fadeOut("slow");
-    $("#map").fadeOut("slow");
-    $("#background").fadeOut("slow", function() {      
+        console.log("Clicked");
+        var id = $(this).attr("id");
+        $(".active").removeClass("active");
+        $(this).parent().addClass("active");   
         $.get("/get_track/" + id, function(track_data) {
-            // console.log(track_data);
+            console.log(track_data);
             $("#content").html(track_data);
-            }, "html");
-        });
+        }, "html");
     })    
 </script>
 </head>

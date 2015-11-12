@@ -14,16 +14,16 @@
 		background-color: rgba(255, 0, 0, .8);
 
 	}
-	.dropdown-content {
+	#nav-dropdown {
 		width: 150px;
 		height: 144px;
 	}
-	.dropdown-content li a {
+	#nav-dropdown li a {
 		padding: 0px!important;
 		border-radius: 0px!important;
 		color: white!important;
 	}
-	.dropdown-content li a:hover {
+	#nav-dropdown li a:hover {
 		background-color: #c70000!important;
 	}
 	.separate-buttons {
@@ -123,4 +123,8 @@ img {
 }
 #wdc_points {
 	margin: 0px 2%;
+	width: 100%!important;
+}
+#chart_container {
+	width: 100%!important;
 }

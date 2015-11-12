@@ -54,18 +54,18 @@ function draw_laps(data) {
 }
 
 $(document).ready(function() {
+	$("#content").css({backgroundImage: "url(imgs/track_pics/<?= $track_info['id']; ?>.jpg)",backgroundPosition: "fill", padding: "20px"});
 	$('.modal-trigger').leanModal();
-
+	$(".progress").show();
 	//call the draw laps function with get_track_laps as a callback
 	get_track_laps();
 })
 </script>
 <!--=======================================BEGIN HTML CONTENT==================================-->
-<img id="background" src="imgs/track_pics/<?= $track_info['id']; ?>.jpg" alt="Track picture">
 
-<div id="information" style="padding:15px; background-color:rgba(0, 0, 0, .7);, color:white; position:absolute; top:5%; left:1%; width:700px;">
+<div id="information">
 	<h2 style="color:white; display:inline-block;">Track Information</h2>
-	<button data-target="layout_modal" class="btn modal-trigger" name="pop_out" style="display:inline-block; margin-bottom:28px; margin-left:63px;">Layout</button>
+	<p><button data-target="layout_modal" class="btn modal-trigger" name="pop_out">Layout</button></p>
 	<p style="color: white;"><?= $track_info['info']; ?></p>
 	<h3 style="color: white;">Fastest Laps</h3>
 	<ul id="laps" style="color: white;">
@@ -86,7 +86,7 @@ $(document).ready(function() {
 </div>
 
 
-<div id="map" style="height:650px; width:700px;position:absolute!important; left:50%; top:5%;"> 
+<div id="map"> 
 
 </div>
 <!--=======================================END HTML CONTENT==================================-->

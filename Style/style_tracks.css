@@ -13,17 +13,17 @@
 		-webkit-transition: .25s;
 		background-color: rgba(255, 0, 0, .8);
 	}
-	.dropdown-content {
+	#nav-dropdown {
 		width: 150px;
 		height: 144px;
 	}
-	.dropdown-content li a {
+	#nav-dropdown li a {
 		padding: 0px!important;
 		border-radius: 0px!important;
 		color: white!important;
 		background-color: black;
 	}
-	.dropdown-content li a:hover {
+	#nav-dropdown li a:hover {
 		background-color: #c70000!important;
 	}
 	.separate-buttons {
@@ -63,6 +63,7 @@
 		padding: 10px 0px!important;
 		border-radius: 0px!important;
 		color: white!important;
+		background-color: black;
 	}
 	#tracks-dropdown li a:hover {
 		background-color: #c70000!important;
@@ -82,7 +83,6 @@
 .side-nav {
 	width: 13%!important;
 	min-width: 206px;
-
 }
 #content {
 	display: inline-block;
@@ -91,6 +91,7 @@
 	width: 87%;
 }
 #background {
+	position: relative;
 	vertical-align: top;
 	width: 100%;
 }
@@ -99,4 +100,36 @@ body {
 }
 .nav-wrapper {
 	background-color: black;
+}
+/*track_content CSS */
+.side-nav li.active, .side-nav li.hover  {
+	background-color: rgba(255, 0, 0, .6); 
+}
+#information {
+	background-color: rgba(0, 0, 0, .7);
+	padding: 15px;
+	display: inline-block;
+	width: 40%;
+	margin-right: 40px;
+	vertical-align: top;
+	margin-bottom: 20px;
+}
+#map {
+	position: static!important;
+	height: 650px;
+	width: 650px;
+	display: inline-block;
+	vertical-align: top;
+}
+@media screen and (max-width: 1220px) {
+	#map {
+		display: block!important;
+		width: 100%;
+	}
+	#information {
+		width: 100%;
+	}
+	#content {
+		width: 100%;
+	}
 }
