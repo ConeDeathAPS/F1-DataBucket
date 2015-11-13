@@ -38,6 +38,7 @@ h4 {
 }
 #constructor_graph {
 	display: inline-block;
+	width: 100%;
 }
 .progress {
 	display: inline-block;

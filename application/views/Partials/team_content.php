@@ -86,14 +86,14 @@ $(document).on("click", ".btn", function() {
 	$(".progress").show();
 	var category = $(this).attr("id");
 	if ($("#chart_container").html() === undefined) {
-		$("#progress_indicators").show();
-		getHistory(category);			
+		$("#progress_indicators").show(function() {
+			getHistory(category);				
+		});
 	} else {
 		parseData(category, data);
 	}
 });
 </script>
-<link rel="stylesheet" href="Style/style_team_content.css">
 <div class="team_info">
 	<div class="main_content">
 		<h1><?= $data['team_name']; ?></h1>
@@ -109,12 +109,7 @@ $(document).on("click", ".btn", function() {
 		<h4><?= $data['driver2_name']; ?></h4>
 	</div>
 	<div id="constructor_graph">
-        <div id="progress_indicators" hidden>
-            <h4>Getting driver data...<span id="percent"></span>%</h4>
-            <div class="progress">
-                <div class="determinate"></div>
-            </div>            
-        </div>
+        <h4 id="progress_indicators" hidden>Getting driver data... <i class="fa fa-spinner fa-spin"></i></h4>                    
 	</div>
 
 </div>
