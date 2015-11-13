@@ -155,7 +155,6 @@ if (isset($driver_info)) {
             <li><a class="graph_control" id="points" href="#!">WDC Points</a></li>
             <li><a class="graph_control" id="position" href="#!">WDC Postion</a></li>
         </ul>        
-
     </div>
     <div id="driver_graph">
         <h4 id="progress_indicators" hidden>Getting driver data... <i class="fa fa-spinner fa-spin"></i></h4>         

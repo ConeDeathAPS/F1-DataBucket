@@ -49,6 +49,9 @@
 		width: 100%!important;
 		margin: 0!important;
 	}
+	#info_container {
+		width: 37%!important;
+	}
 	.drivers-dropdown-button {
 		display: inline-block;
 		float: left;
@@ -98,11 +101,12 @@
 	display: inline-block;
 	color: white;
 	vertical-align: top;
-	margin: 2%;
-	width: 400px;
+	width: 100%;
+	text-align: center;
 }
 #driver_information p, h3 {
 	text-align: center;
+	width: 100%;
 }
 body {
 	background-color: black;
@@ -133,6 +137,7 @@ img {
 #info_container {
 	width: 51%;
 	height: 100%;
+	margin: 0 auto;
 }
 #driver_graph {
 	margin: 0px 2%;
